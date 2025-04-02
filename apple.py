@@ -54,7 +54,7 @@ def get_list_of_jobs(page_number):
 
 total_number_of_pages = get_list_of_jobs(1)
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
     futures = [executor.submit(get_list_of_jobs, page) for page in range(1, total_number_of_pages + 1)]
     for future in concurrent.futures.as_completed(futures):
         try:
